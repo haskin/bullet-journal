@@ -1,5 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
 import "./App.css";
 import Sidebar from "./Sidebar.js";
 import Future from "./Future.js";
@@ -8,14 +9,17 @@ import Monthly from "./Monthly.js";
 
 const App = () => {
     return (
-        <div className="app-container">
-            <Sidebar />
-            <div className="main-body">
-                {/* <Future /> */}
-                
-                 <Monthly/>
+        <Router>
+            <div className="app-container">
+                <Sidebar />
+                <div className="main-body">
+                    {/* <Future /> */}
+                    <Route path="/future" component={Future}/>
+                    {/* <Monthly/> */}
+                    <Route path="/monthly" component={Monthly}/>
+                </div>
             </div>
-        </div>
+        </Router>
     );
 };
 
