@@ -1,0 +1,43 @@
+.sidebar {
+    color:yellow;
+    position:relative;
+    display:inline-block;
+    left:0;
+    top:0;
+    bottom:0;
+    height:100vh;
+    width:10%;
+    border: 5px solid red;
+    grid-column-start:1;
+    grid-column-end: 3;
+}
+.sidebar-logo {
+    position:relative;
+    display: block;
+    align-items:center;
+    text-align: center;
+    border: 5px solid green;
+}
+
+.sidebar-links {
+    border: 5px solid red;
+    text-align:center;
+    list-style: none;
+    margin:0;
+    padding:0;
+}
+     /* list-style:none;
+     padding:100px 20px;
+     li{
+       margin-bottom:30px;
+       text-align:left;
+       span{
+         position:absolute;
+         left:50px;
+       }
+         a{
+           text-decoration:none;
+           color: #000;
+           }
+        }
+   } */
