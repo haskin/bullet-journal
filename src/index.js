@@ -7,6 +7,9 @@ import Future from "./Future.js";
 import Monthly from "./Monthly.js";
 
 
+// import data from "./db.json";
+import localStorage from "./local-storage.js";
+localStorage();
 const App = () => {
     return (
         <Router>

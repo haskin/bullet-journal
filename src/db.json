@@ -1,0 +1,17 @@
+{
+    "monthly" : [
+
+    ],
+    "future" : [
+        {
+            "id": 1,
+            "month": "january",
+            "bullets":[]
+        },
+        {
+            "id": 2,
+            "month": "february",
+            "bullets":[]
+        }
+    ]
+}

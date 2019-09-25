@@ -1,25 +1,13 @@
 import React, {useState, useEffect} from "react"
+import {getFutureLocalStorage as getFuture, 
+        setFutureLocalStorage as setFuture, 
+        getFutureLocalStorageBullets as getBullets
+        } from "./local-storage.js"
 import "./css/Future.css"
-
-const months = [{name:"January",bullets:[]},
-{name:"February",bullets:[]},
-{name:"March",bullets:[]},
-{name:"April",bullets:[]},
-{name:"May",bullets:[]},
-{name:"June",bullets:[]},
-{name:"July",bullets:[]},
-{name:"August",bullets:[]},
-{name:"September",bullets:[]},
-{name:"October",bullets:[]},
-{name:"November",bullets:[]},
-{name:"December",bullets:[]},
-]
-
-
 
 const Month = ({month}) => {
     const [input, setInput] = useState('');
-    const [bullets, setBullets] = useState([]);
+    const [bullets, setBullets] = useState(month.bullets);
     const [symbol, setSymbol] = useState('.');
 
     const inputChangeHandler = (e) => {
@@ -33,7 +21,9 @@ const Month = ({month}) => {
             symbol:symbol,
             content: input
         }
-        setBullets(bullets.concat(newBullet));
+        setFuture(month.id, newBullet);
+        const newBullets = getBullets(month.id);
+        setBullets(newBullets);
     }
 
     const symbolChangeHandler = (e) => {
@@ -57,6 +47,7 @@ const Month = ({month}) => {
 };
 
 const Future = () => {
+    const months = getFuture();
     return (
         <div className="future-container">
             {months.map(month => <div className="month-container">
