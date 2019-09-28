@@ -100,9 +100,9 @@ const getFutureLocalStorage = () => {
 const getFutureLocalStorageBullets = (id) => {
     return getLocalStorage(FUTURE_KEY)[id].bullets;
 }
-
-
 /***** Future Log *****/
+
+
 export default function localStorage() {
     setDefaultLocalStorage();
 }
