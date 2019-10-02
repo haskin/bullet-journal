@@ -16,3 +16,11 @@
 .dailyBody__today{
     border: 3px solid red;
 }
+
+.bulletContainer__bullet{
+    display:inline;
+}
+.bulletContainer__delete{
+    position: relative;
+    float:right;
+}

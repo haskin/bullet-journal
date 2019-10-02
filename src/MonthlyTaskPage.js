@@ -12,7 +12,6 @@ const MonthlyTaskPage = () => {
 
     const inputChangeHandler = (e) => {
         setInput(e.target.value);
-        
     }
 
     const addTaskHandler = (e) => {

@@ -33,34 +33,99 @@ class DayElement {
 function createToday(date) {
     return new DayElement(date);
 }
+
+const AddBulletInput = ({index, bullets, setBullets}) => {
+    const [input, setInput] = useState('');
+    const [symbol, setSymbol] = useState('.');
+
+    const inputChangeHandler = (e) => {
+        setInput(e.target.value);
+    }
+
+    const symbolChangeHandler = (e) => {
+        setSymbol(e.target.value);
+    }
+
+    const addBulletHandler = (e) => {
+        const newBullet = { 
+            symbol:symbol,
+            content: input
+        }
+        const newBullets = [...bullets];
+        newBullets[index].push(newBullet);
+        // console.log(newBullets);
+        // console.log(typeof newBullets[index]);
+        setBullets(newBullets);
+        // resetInputValue();
+    }
+    return(
+        <div className="dailyBulletAdd">
+                    <input className="dailyBulletAdd__input" onChange={inputChangeHandler} type="text"/>
+                    <select onChange={symbolChangeHandler}>
+                    <option value=".">.</option>
+                        <option value="-">-</option>
+                        <option value="o">o</option>
+                    </select>
+                    <button className="dailyBulletAdd__button" onClick={addBulletHandler} type="button">Add</button>
+        </div>
+    )
+};
 const Daily = () => {
     const yearSize = 366;
     const dailyBullets = new Array(yearSize);
+    for(let i=0; i < yearSize; i++){
+        dailyBullets[i] = new Array();
+    }
     const [bullets, setBullets] = useState(dailyBullets);
-
+    
     const currentDate = new Date();
     const yesterday = new DayElement(new Date(currentDate.valueOf() 
                                     - 86400000)); // that is: 24 * 60 * 60 * 1000)
     const today = new DayElement(currentDate);
+    console.log(bullets[today.index]);
     const tomorrow = new DayElement(new Date(currentDate.valueOf() 
                                     + 86400000));
     const afterTomorrow = new DayElement(new Date(currentDate.valueOf() 
                                         + 86400000 * 2));
-    console.log(afterTomorrow );
+
+    const deleteClickHandler = (dayIndex, bulletIndex) => {
+        // console.log(dayIndex);
+        // console.log(bulletIndex);
+        
+        // const oldBullets = bullets[dayIndex];
+        // const newBullets = oldBullets.slice(0, bulletIndex).concat(oldBullets.slice(bulletIndex + 1));
+        // return () => setBullets(newBullets);
+        const newBullets = [...bullets];
+        const arr = newBullets[dayIndex];
+        newBullets[dayIndex] = arr.slice(0, bulletIndex).concat(arr.slice(bulletIndex + 1));
+        return () => setBullets(newBullets);
+
+    }
     return (
         <div className="dailyBody">
             <div className="dailyBody__yesterday dayContainer">
                 <pre><h2>{yesterday.month}.{yesterday.day} {yesterday.name}</h2>
                 </pre>
+                {bullets[yesterday.index]}
+
             </div>
             <div className="dailyBody__today dayContainer">
                 <pre><h2>{today.month}.{today.day} {today.name}</h2></pre>
+                <AddBulletInput index={today.index} bullets={bullets} setBullets={setBullets}/>
+                {bullets[today.index].map( (bullet, index) => 
+                    <div className="dayContainer__bulletContainer">
+                        <li className="bulletContainer__bullet">{bullet.symbol}{bullet.content}</li>
+                        <button className="bulletContainer__delete" onClick={deleteClickHandler(today.index, index)} type="button">Delete</button>
+                    </div>
+                )}
             </div>
             <div className="dailyBody__tomorrow dayContainer">
                 <pre><h2>{tomorrow.month}.{tomorrow.day} {tomorrow.name}</h2></pre>
+                {bullets[tomorrow.index]}
             </div>
             <div className="dailyBody__afterTomorrow dayContainer">
                 <pre><h2>{afterTomorrow.month}.{afterTomorrow.day} {afterTomorrow.name}</h2></pre>
+                {bullets[afterTomorrow.index]}
             </div>
         </div>
     )
