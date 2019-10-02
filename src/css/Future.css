@@ -1,5 +1,5 @@
 .future-container {
-    position: absolute;
+    position: static ;
     display: inline-grid;
     grid-template-columns: 1fr 1fr;  
     top:10%;

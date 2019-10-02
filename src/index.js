@@ -3,6 +3,7 @@ import ReactDOM from "react-dom";
 import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
 import "./App.css";
 import Sidebar from "./Sidebar.js";
+import Nav from "./Nav.js"
 import Daily from "./Daily.js"
 import Future from "./Future.js";
 import Monthly from "./Monthly.js";
@@ -17,6 +18,7 @@ const App = () => {
             <div className="app-container">
                 <Sidebar />
                 <div className="main-body">
+                    <Nav />
                     <Route path="/daily" component={Daily}/>           
                     {/* <Daily /> */}
                     {/* <Future /> */}

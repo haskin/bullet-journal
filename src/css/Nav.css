@@ -1,0 +1,10 @@
+.navbar{
+    position: static;
+    display:inline-block;
+    background-color: darkslategrey;
+    height:50px;
+    width:100%;
+    top:0;
+    bottom:0;
+  }
+  

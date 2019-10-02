@@ -7,9 +7,9 @@ html {
   /* display:grid; */
 }
 
-body {
+/* body {
   grid-template-columns: 1fr 1fr 1fr;
-}
+} */
 
 .app-container {
   grid-template-columns: 1fr 1fr 1fr;
@@ -18,8 +18,8 @@ body {
 .main-body{
   background-color: grey;
   position:absolute; /*Moves it all the way up*/
-  display:inline-grid;
-  grid-template-columns: 1fr 1fr;
+  display:inline-block;
+  /* grid-template-columns: 1fr 1fr; */
   /* left:10%; */
   color:pink;
   border: 5px solid orange;
@@ -27,3 +27,5 @@ body {
   width:88%;
   height:100%;
 }
+
+
