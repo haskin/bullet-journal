@@ -10,8 +10,16 @@ const getLocalStorage = (key) => {
     return JSON.parse(window.localStorage.getItem(key));
 }
 /******************* Setters ********************/
-/***** Monthly Log *****/
+/***** Set Monthly Log *****/
 //Sets the day data in the monthly local storage
+// const setMonthlyLocalStorage = (monthIndex, data) => {
+//     const monthly = getMonthlyLocalStorage(MONTHLY_KEY);
+//     const month = monthly[monthIndex];
+//     if (month.id === monthIndex){
+//         month = data
+//         setLocalStorage(MONTHLY_KEY, monthly);
+//     }
+// }
 const setMonthlyCalendarLocalStorage = (monthIndex, dayIndex, data) => {
     const monthly = getMonthlyLocalStorage(MONTHLY_KEY);
     const month = monthly[monthIndex];
@@ -22,14 +30,20 @@ const setMonthlyCalendarLocalStorage = (monthIndex, dayIndex, data) => {
     }
 };
 //Sets the task data in the monthly local storage
-const setMonthlyTaskLocalStorage = () => {
-
-}
+const setMonthlyTaskLocalStorage = (monthIndex, tasks) => {
+    const monthly = getMonthlyLocalStorage(MONTHLY_KEY);
+    const month = monthly[monthIndex];
+    if (month.id === monthIndex){
+        month.tasks = [...tasks];        
+        monthly[monthIndex] = month;
+        setLocalStorage(MONTHLY_KEY, monthly);
+    }
+};
 
 const setDefaultMonthly = () => {
     const defaultMonthly = [
         {
-            "id":"0",
+            "id":0,
             "name": "January",
             "days": new Array(30),
             "tasks": []
@@ -104,9 +118,9 @@ const setDefaultMonthly = () => {
     setLocalStorage(MONTHLY_KEY, defaultMonthly);
 };
 
-/***** Monthly Log *****/
+/***** Set Monthly Log *****/
 
-/***** Future Log *****/
+/***** Set Future Log *****/
 const setFutureLocalStorage = (id, newBullet) => {
     const future = getLocalStorage(FUTURE_KEY);
     const month = future[id];
@@ -207,4 +221,5 @@ export default function localStorage() {
     setDefaultLocalStorage();
 }
 
-export {getFutureLocalStorage, setFutureLocalStorage, getFutureLocalStorageBullets}
+export {getFutureLocalStorage, setFutureLocalStorage, getFutureLocalStorageBullets};
+export {getMonthlyLocalStorage, setMonthlyCalendarLocalStorage};

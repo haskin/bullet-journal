@@ -1,17 +1,20 @@
 import React, {useState} from "react";
+import {getMonthlyLocalStorage as getMonthly,
+        setMonthlyCalendarLocalStorage as setMonthlyCalendar} 
+        from "./local-storage.js"
 
-const DeleteCalendarBullet = ({index, bullets, setBullets}) => {
+const DeleteCalendarBullet = ({monthIndex, dayIndex, setBullets}) => {
     const deleteBulletHandler = (e) => {
-        const newBullets = [...bullets];
-        newBullets[index] = new String();
-        setBullets(newBullets);
+        //Sets the current day content to null in local storage
+        setMonthlyCalendar(monthIndex, dayIndex, null);
+        setBullets(getMonthly()[monthIndex].days);
     }
     return(
         <button type="button" onClick={deleteBulletHandler}>delete</button>
     );
 }
 
-const EditCalendarBullet = ({editSwitch, changeVisibility, index, input, setInput, bullets, setBullets}) => {
+const EditCalendarBullet = ({editSwitch, changeVisibility, monthIndex, dayIndex, input, setInput, bullets, setBullets}) => {
     
     const inputChangeHandler = (e) => {
         setInput(e.target.value);
@@ -19,14 +22,14 @@ const EditCalendarBullet = ({editSwitch, changeVisibility, index, input, setInpu
 
     const submitTaskHandler = (e) => {
         e.preventDefault();
-        const newBullets = bullets;
-        newBullets[index] = input;
-        // console.log(changeVisibility);
-        //This is a reference to function so it must be run after 
-        changeVisibility(index)();
-        setBullets(newBullets);
-        
-        // return () => setBullets(bullets.concat(newBullet));
+        //Get the monthly day array from local storage
+        // const newBullets = getMonthly()[monthIndex].days;
+        // newBullets[dayIndex] = input;
+        //Sets the new data for the day in local storage
+        setMonthlyCalendar(monthIndex, dayIndex, input); 
+        changeVisibility(dayIndex)();
+        //Retrieve the new data and set it to the bullets
+        setBullets(getMonthly()[monthIndex].days);
     }
     const visibilityState = editSwitch ? "visible" : "hidden"; 
     // console.log(index, visibilityState);
@@ -38,20 +41,16 @@ const EditCalendarBullet = ({editSwitch, changeVisibility, index, input, setInpu
     );
 };
 
-const MonthlyCalendarPage = ({month}) => {
-    const [input, setInput] = useState('');   
-    // const [editSwitch, setEditSwitch] = useState(false);
-    const emptySwitch = new Array(month.dayAmount);
-    const emptyBullets = new Array(month.dayAmount);
-    for(let i=0; i < emptyBullets.length; i++){
-        emptySwitch[i] = false; 
-        emptyBullets[i] = new String();
-    }
-    const [editSwitch, setEditSwitch] = useState(emptySwitch)
-    // const [bullets, setBullets] = useState(new Array(month.dayAmount));
-    const [bullets, setBullets] = useState(emptyBullets);
+const MonthlyCalendarPage = ({monthIndex}) => {
+    const [input, setInput] = useState('');
+    //Gets month from local storage
+    const month = getMonthly()[monthIndex];
+    //Creates edit switchs based on the month size
+    const emptySwitch = new Array(month.length).fill(false);
+    const [editSwitch, setEditSwitch] = useState(emptySwitch);
     
-    //TODO!!!!!!!!!!!!!!!!!!!!!!!! Copy array instead of switching state directly
+    const [bullets, setBullets] = useState(month.days);
+    
     const editButtonClickHandler = (index) => {
         const newEditSwitchs = [...editSwitch];
         newEditSwitchs[index] = !newEditSwitchs[index];
@@ -63,9 +62,9 @@ const MonthlyCalendarPage = ({month}) => {
     {bullets.map( (bullet,index) => (<div>
                                         <span>{index+1}</span>
                                         <span>{bullet}</span>
-                                        <EditCalendarBullet editSwitch={editSwitch[index]} input={input} changeVisibility={editButtonClickHandler} index={index} setInput={setInput} bullets={bullets} setBullets = {setBullets}/>
+                                        <EditCalendarBullet editSwitch={editSwitch[index]} input={input} changeVisibility={editButtonClickHandler} monthIndex={monthIndex} dayIndex={index} setInput={setInput} bullets={bullets} setBullets = {setBullets}/>
                                         <button className="monthlyCalendar__editButton" type="button" onClick={editButtonClickHandler(index)}>Edit</button>
-                                        <DeleteCalendarBullet index={index} bullets={bullets} setBullets={setBullets}/>
+                                        <DeleteCalendarBullet monthIndex={monthIndex} dayIndex={index} setBullets={setBullets}/>
                                     </div>
                                     )  
                 )

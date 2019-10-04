@@ -74,11 +74,11 @@ const monthlyCalendar = [
 const Monthly = () => {
 
     const today = new Date();
-    const month = monthlyCalendar[today.getMonth()];
-
+    // const month = monthlyCalendar[today.getMonth()];
+    const monthIndex = today.getMonth();
     return (
         <div className="monthlyCalendarBody">
-            <MonthlyCalendarPage class="monthlyCalendarBody__calendar" month={month}/>
+            <MonthlyCalendarPage class="monthlyCalendarBody__calendar" monthIndex={monthIndex}/>
             <MonthlyTaskPage/>
         </div>
     ) 
