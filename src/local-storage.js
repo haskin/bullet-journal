@@ -1,5 +1,6 @@
 // Keys ***********************
-const FUTURE_KEY = "future"
+const MONTHLY_KEY = "monthly";
+const FUTURE_KEY = "future";
 // Keys ***********************
 
 const setLocalStorage = (key, data) => {
@@ -9,6 +10,101 @@ const getLocalStorage = (key) => {
     return JSON.parse(window.localStorage.getItem(key));
 }
 /******************* Setters ********************/
+/***** Monthly Log *****/
+//Sets the day data in the monthly local storage
+const setMonthlyCalendarLocalStorage = (monthIndex, dayIndex, data) => {
+    const monthly = getMonthlyLocalStorage(MONTHLY_KEY);
+    const month = monthly[monthIndex];
+    if (month.id === monthIndex){
+        month.days[dayIndex] = data;        
+        monthly[monthIndex] = month;
+        setLocalStorage(MONTHLY_KEY, monthly);
+    }
+};
+//Sets the task data in the monthly local storage
+const setMonthlyTaskLocalStorage = () => {
+
+}
+
+const setDefaultMonthly = () => {
+    const defaultMonthly = [
+        {
+            "id":"0",
+            "name": "January",
+            "days": new Array(30),
+            "tasks": []
+        },
+        {
+            "id": 1,
+            "name": "February",
+            "days": new Array(29),
+            "tasks":[]
+        },
+        {
+            "id": 2,
+            "name": "March",
+            "days": new Array(31),
+            "tasks":[]
+        },
+        {
+            "id": 3,
+            "name": "April",
+            "days": new Array(30),
+            "tasks":[]
+        },
+        {
+            "id": 4,
+            "name": "May",
+            "days": new Array(31),
+            "tasks":[]
+        },
+        {
+            "id": 5,
+            "name": "June",
+            "days": new Array(30),
+            "tasks":[]
+        },
+        {
+            "id": 6,
+            "name": "July",
+            "days": new Array(31),
+            "tasks":[]
+        },
+        {
+            "id": 7,
+            "name": "August",
+            "days": new Array(31),
+            "tasks":[]
+        },
+        {
+            "id": 8,
+            "name": "September",
+            "days": new Array(30),
+            "tasks":[]
+        },
+        {
+            "id": 9,
+            "name": "October",
+            "days": new Array(31),
+            "tasks":[]
+        },
+        {
+            "id": 10,
+            "name": "November",
+            "days": new Array(30),
+            "tasks":[]
+        },
+        {
+            "id": 11,
+            "name": "December",
+            "days": new Array(31),
+            "tasks":[]
+        }
+    ]
+    setLocalStorage(MONTHLY_KEY, defaultMonthly);
+};
+
+/***** Monthly Log *****/
 
 /***** Future Log *****/
 const setFutureLocalStorage = (id, newBullet) => {
@@ -89,10 +185,14 @@ const setDefaultFuture = () => {
 
 const setDefaultLocalStorage = () => {
     setDefaultFuture();
+    setDefaultMonthly();
 };
 /******************* Getters ********************/
 
 /***** Future Log *****/
+const getMonthlyLocalStorage = () => {
+    return getLocalStorage(MONTHLY_KEY);
+};
 const getFutureLocalStorage = () => {
     return getLocalStorage(FUTURE_KEY);
 }

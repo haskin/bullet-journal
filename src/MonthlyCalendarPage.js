@@ -46,7 +46,6 @@ const MonthlyCalendarPage = ({month}) => {
     for(let i=0; i < emptyBullets.length; i++){
         emptySwitch[i] = false; 
         emptyBullets[i] = new String();
-
     }
     const [editSwitch, setEditSwitch] = useState(emptySwitch)
     // const [bullets, setBullets] = useState(new Array(month.dayAmount));
