@@ -1,6 +1,9 @@
 import React, {useState} from "react";
+import {getMonthlyLocalStorage as getMonthly,
+        setMonthlyTaskLocalStorage as setMonthlyTask} 
+        from "./local-storage.js"
 
-const MonthlyTaskPage = () => {
+const MonthlyTaskPage = ({monthIndex}) => {
     const [input, setInput] = useState('');
     const [symbol, setSymbol] = useState('.');
     const [bullets, setBullets] = useState([]);
@@ -19,7 +22,10 @@ const MonthlyTaskPage = () => {
             symbol:symbol,
             content: input
         }
-        setBullets(bullets.concat(newBullet));
+        console.log("in add task");
+        const noDeleteIndex = true;
+        setMonthlyTask(monthIndex, newBullet);
+        setBullets(getMonthly()[monthIndex].tasks);
         resetInputValue();
     }
 
@@ -28,9 +34,9 @@ const MonthlyTaskPage = () => {
     }
 
     const deleteBulletHandler = (deleteIndex) => {
-        const newBullets = bullets.filter((bullet,index) => index != deleteIndex);
         return () => {
-                setBullets(newBullets);
+                setMonthlyTask(monthIndex, null, deleteIndex);
+                setBullets(getMonthly()[monthIndex].tasks);
                 setInput(''); 
         }
     }

@@ -30,13 +30,29 @@ const setMonthlyCalendarLocalStorage = (monthIndex, dayIndex, data) => {
     }
 };
 //Sets the task data in the monthly local storage
-const setMonthlyTaskLocalStorage = (monthIndex, tasks) => {
+const setMonthlyTaskLocalStorage = (monthIndex, task, deleteIndex=null) => {
+    console.log("month index ", monthIndex);
+    console.log("task", task);
+    console.log(deleteIndex);
     const monthly = getMonthlyLocalStorage(MONTHLY_KEY);
     const month = monthly[monthIndex];
     if (month.id === monthIndex){
-        month.tasks = [...tasks];        
-        monthly[monthIndex] = month;
-        setLocalStorage(MONTHLY_KEY, monthly);
+        //Deleting a task
+        if(task === null && deleteIndex !== null){
+            console.log(month.tasks);
+            month.tasks = month.tasks.slice(0,deleteIndex)
+                          .concat(month.tasks.slice(deleteIndex+1));
+            console.log(month.tasks);
+            monthly[monthIndex] = month;
+            setLocalStorage(MONTHLY_KEY, monthly);
+        }
+        //Inserting a task    
+        else{
+            console.log("in insert");
+            month.tasks.push(task);        
+            monthly[monthIndex] = month;
+            setLocalStorage(MONTHLY_KEY, monthly);
+        }
     }
 };
 
@@ -222,4 +238,4 @@ export default function localStorage() {
 }
 
 export {getFutureLocalStorage, setFutureLocalStorage, getFutureLocalStorageBullets};
-export {getMonthlyLocalStorage, setMonthlyCalendarLocalStorage};
+export {getMonthlyLocalStorage, setMonthlyCalendarLocalStorage, setMonthlyTaskLocalStorage};

@@ -79,7 +79,7 @@ const Monthly = () => {
     return (
         <div className="monthlyCalendarBody">
             <MonthlyCalendarPage class="monthlyCalendarBody__calendar" monthIndex={monthIndex}/>
-            <MonthlyTaskPage/>
+            <MonthlyTaskPage monthIndex={monthIndex}/>
         </div>
     ) 
 };
