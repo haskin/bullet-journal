@@ -10,12 +10,12 @@
     
 }
 .month-container {
-    background-color: rgb(182, 182, 182);
-    color:black;
+    background-color: hsl(215, 21%, 80%); 
+    color:hsl(215, 25%, 40%);
     position: relative;
     display: inline-block;
     width:80%;
-    border: 5px solid darkslategrey;
+    border: 5px solid #5c7598;
     /* grid-column:1; */
 }
 

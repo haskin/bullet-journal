@@ -21,10 +21,11 @@ const App = () => {
                     <Nav />
                     <Route path="/daily" component={Daily}/>           
                     {/* <Daily /> */}
-                    {/* <Future /> */}
-                    <Route path="/future" component={Future}/>
                     {/* <Monthly/> */}
                     <Route path="/monthly" component={Monthly}/>
+                    {/* <Future /> */}
+                    <Route path="/future" component={Future}/>
+                   
                 </div>
             </div>
         </Router>

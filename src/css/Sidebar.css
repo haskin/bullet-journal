@@ -1,5 +1,5 @@
 .sidebar {
-    color:yellow;
+    background-color:  	#abb7c8;
     position:relative;
     display:inline-block;
     left:0;
@@ -7,24 +7,40 @@
     bottom:0;
     height:100vh;
     width:10%;
-    border: 5px solid red;
+    /* border: 5px solid red; */
     grid-column-start:1;
     grid-column-end: 3;
 }
 .sidebar-logo {
+    color:#5c7598;
+    font-size:32px;
     position:relative;
     display: block;
     align-items:center;
     text-align: center;
-    border: 5px solid green;
+    /* border: 5px solid green; */
 }
 
 .sidebar-links {
-    border: 5px solid red;
+    /* border: 5px solid red; */
     text-align:center;
     list-style: none;
+    text-decoration: none;
     margin:0;
     padding:0;
+}
+
+.sidebar-links {
+  /* border: 5px solid red; */
+  text-align:center;
+  list-style: none;
+  text-decoration: none;
+  margin:0;
+  padding:0;
+}
+.sidebar-links a{
+  /* border: 5px solid red; */
+  text-decoration: none;
 }
      /* list-style:none;
      padding:100px 20px;

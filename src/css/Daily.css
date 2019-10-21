@@ -13,6 +13,14 @@
     height:100%;
     border: 1px solid lightblue;
 }
+.dayContainer__header {
+    /*Moves the background color all the way up*/
+    position:absolute;
+    width:50%;
+    margin:0;
+    color:#5c7598;
+    background-color: #c2c4b6;
+}
 
 .dailyBody__today{
     border: 3px solid red;

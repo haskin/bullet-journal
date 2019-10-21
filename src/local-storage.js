@@ -1,4 +1,5 @@
 // Keys ***********************
+const DAILY_KEY = "daily";
 const MONTHLY_KEY = "monthly";
 const FUTURE_KEY = "future";
 // Keys ***********************
@@ -10,6 +11,30 @@ const getLocalStorage = (key) => {
     return JSON.parse(window.localStorage.getItem(key));
 }
 /******************* Setters ********************/
+/***** Set Daily Log *****/
+const setDailyLocalStorage = (dayIndex, data, deleteIndex=null) => {
+    //Deleting a value in daily local storage
+    if(data===null && deleteIndex !== null){
+        let daily = getDailyLocalStorage();
+        const newBullets = daily[dayIndex].slice(0,deleteIndex)
+        .concat(daily[dayIndex].slice(deleteIndex+1));
+        //Is this a shallow or deep copy?
+        daily[dayIndex] = newBullets;
+        setLocalStorage(DAILY_KEY, daily);
+    }
+    else{
+        const daily = getDailyLocalStorage();
+        daily[dayIndex].push(data);
+        setLocalStorage(DAILY_KEY, daily); 
+    }
+}
+const setDefaultDaily = () => {
+    const yearSize = 366;
+    const daily = new Array(yearSize).fill([]);
+    setLocalStorage(DAILY_KEY, daily);
+}
+/***** Set Daily Log *****/
+
 /***** Set Monthly Log *****/
 //Sets the day data in the monthly local storage
 // const setMonthlyLocalStorage = (monthIndex, data) => {
@@ -214,15 +239,26 @@ const setDefaultFuture = () => {
 /***** Future Log *****/
 
 const setDefaultLocalStorage = () => {
+    setDefaultDaily();
     setDefaultFuture();
     setDefaultMonthly();
 };
 /******************* Getters ********************/
 
-/***** Future Log *****/
+/***** Get Daily Log *****/
+const getDailyLocalStorage = () => {
+    return getLocalStorage(DAILY_KEY);
+};
+/***** Get Daily Log *****/
+
+/***** Get Monthly Log *****/
 const getMonthlyLocalStorage = () => {
     return getLocalStorage(MONTHLY_KEY);
 };
+/***** Get Monthly Log *****/
+
+/***** Future Log *****/
+
 const getFutureLocalStorage = () => {
     return getLocalStorage(FUTURE_KEY);
 }
@@ -239,3 +275,4 @@ export default function localStorage() {
 
 export {getFutureLocalStorage, setFutureLocalStorage, getFutureLocalStorageBullets};
 export {getMonthlyLocalStorage, setMonthlyCalendarLocalStorage, setMonthlyTaskLocalStorage};
+export {getDailyLocalStorage, setDailyLocalStorage}; 

@@ -3,7 +3,7 @@
 } */
 
 html {
-  background: grey;
+  background: #abb7c8;
   /* display:grid; */
 }
 
@@ -16,16 +16,14 @@ html {
 }
 
 .main-body{
-  background-color: grey;
+  background-color: #abb7c8;
   position:absolute; /*Moves it all the way up*/
   display:inline-block;
   /* grid-template-columns: 1fr 1fr; */
   /* left:10%; */
-  color:pink;
+  color:#dadadb;
   border: 5px solid orange;
   grid-column:2;
   width:88%;
   height:100%;
 }
-
-

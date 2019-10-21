@@ -1,4 +1,7 @@
 import React, {useState} from "react";
+import {getDailyLocalStorage as getDaily,
+        setDailyLocalStorage as setDaily} 
+        from "./local-storage.js"
 import "./css/Daily.css";
 //Converts the month to how days have passed before it
 function monthToDaysPassed(month) {
@@ -51,11 +54,15 @@ const AddBulletInput = ({index, bullets, setBullets}) => {
             symbol:symbol,
             content: input
         }
-        const newBullets = [...bullets];
-        newBullets[index].push(newBullet);
+        console.log(index);
+        // const newBullets = [...bullets];
+        // newBullets[index].push(newBullet);
+        setDaily(index, newBullet)
         // console.log(newBullets);
         // console.log(typeof newBullets[index]);
-        setBullets(newBullets);
+        // setBullets(newBullets);
+        // console.log(getDaily()[index]);
+        setBullets(getDaily());
         // resetInputValue();
     }
     return(
@@ -71,12 +78,12 @@ const AddBulletInput = ({index, bullets, setBullets}) => {
     )
 };
 const Daily = () => {
-    const yearSize = 366;
-    const dailyBullets = new Array(yearSize);
-    for(let i=0; i < yearSize; i++){
-        dailyBullets[i] = new Array();
-    }
-    const [bullets, setBullets] = useState(dailyBullets);
+    // const yearSize = 366;
+    // const dailyBullets = new Array(yearSize);
+    // for(let i=0; i < yearSize; i++){
+    //     dailyBullets[i] = new Array();
+    // }
+    const [bullets, setBullets] = useState(getDaily());
     
     const currentDate = new Date();
     const yesterday = new DayElement(new Date(currentDate.valueOf() 
@@ -95,22 +102,25 @@ const Daily = () => {
         // const oldBullets = bullets[dayIndex];
         // const newBullets = oldBullets.slice(0, bulletIndex).concat(oldBullets.slice(bulletIndex + 1));
         // return () => setBullets(newBullets);
-        const newBullets = [...bullets];
-        const arr = newBullets[dayIndex];
-        newBullets[dayIndex] = arr.slice(0, bulletIndex).concat(arr.slice(bulletIndex + 1));
-        return () => setBullets(newBullets);
-
+        // const newBullets = [...bullets];
+        // const arr = newBullets[dayIndex];
+        // newBullets[dayIndex] = arr.slice(0, bulletIndex).concat(arr.slice(bulletIndex + 1));
+        return () => {
+            setDaily(dayIndex, null, bulletIndex);
+            // setBullets(newBullets);
+            setBullets(getDaily());
+        }
     }
     return (
         <div className="dailyBody">
             <div className="dailyBody__yesterday dayContainer">
-                <pre><h2>{yesterday.month}.{yesterday.day} {yesterday.name}</h2>
+                <pre className="dayContainer__header"><h2 >{yesterday.month}.{yesterday.day} {yesterday.name}</h2>
                 </pre>
                 {bullets[yesterday.index]}
 
             </div>
             <div className="dailyBody__today dayContainer">
-                <pre><h2>{today.month}.{today.day} {today.name}</h2></pre>
+                <pre className="dayContainer__header"><h2>{today.month}.{today.day} {today.name}</h2></pre>
                 <AddBulletInput index={today.index} bullets={bullets} setBullets={setBullets}/>
                 {bullets[today.index].map( (bullet, index) => 
                     <div className="dayContainer__bulletContainer">
@@ -120,11 +130,11 @@ const Daily = () => {
                 )}
             </div>
             <div className="dailyBody__tomorrow dayContainer">
-                <pre><h2>{tomorrow.month}.{tomorrow.day} {tomorrow.name}</h2></pre>
+                <pre className="dayContainer__header"><h2>{tomorrow.month}.{tomorrow.day} {tomorrow.name}</h2></pre>
                 {bullets[tomorrow.index]}
             </div>
             <div className="dailyBody__afterTomorrow dayContainer">
-                <pre><h2>{afterTomorrow.month}.{afterTomorrow.day} {afterTomorrow.name}</h2></pre>
+                <pre className="dayContainer__header"><h2>{afterTomorrow.month}.{afterTomorrow.day} {afterTomorrow.name}</h2></pre>
                 {bullets[afterTomorrow.index]}
             </div>
         </div>

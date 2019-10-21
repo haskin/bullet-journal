@@ -4,12 +4,13 @@
     grid-template-columns: 1fr 1fr;  
     width:100%;
     height:100%;
-    border: 5px solid yellow;
+    color:#5c7598;
+    /* border: 5px solid yellow; */
 }
 
 .monthlyHeader{
     position: relative;
-    color:yellow;
+    color:#5c7598;
     text-align: center;
 }
 
@@ -17,7 +18,8 @@
 .monthlyCalendar{
     grid-column-start: 1;
     grid-column-end: 2;
-    border: 5px solid blue;
+    border-right: 5px solid #5c7598;
+    /* border: 5px solid blue; */
 }
 
 .monthlyCalendar__editButton{
