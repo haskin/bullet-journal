@@ -67,12 +67,12 @@ const AddBulletInput = ({index, bullets, setBullets}) => {
     }
     return(
         <div className="dailyBulletAdd">
-                    <input className="dailyBulletAdd__input" onChange={inputChangeHandler} type="text"/>
                     <select onChange={symbolChangeHandler}>
                     <option value=".">.</option>
                         <option value="-">-</option>
                         <option value="o">o</option>
                     </select>
+                    <input className="dailyBulletAdd__input" onChange={inputChangeHandler} type="text"/>
                     <button className="dailyBulletAdd__button" onClick={addBulletHandler} type="button">Add</button>
         </div>
     )
@@ -111,31 +111,51 @@ const Daily = () => {
             setBullets(getDaily());
         }
     }
+
+    console.log(bullets);
     return (
         <div className="dailyBody">
             <div className="dailyBody__yesterday dayContainer">
                 <pre className="dayContainer__header"><h2 >{yesterday.month}.{yesterday.day} {yesterday.name}</h2>
                 </pre>
-                {bullets[yesterday.index]}
-
+                {/* {bullets[yesterday.index]} */}
+                <AddBulletInput index={yesterday.index} bullets={bullets} setBullets={setBullets}/>
+                {bullets[yesterday.index].map( (bullet, index) => 
+                    <div className="dayContainer__bulletContainer">
+                        <li className="bulletContainer__bullet"><span className="globalSymbol">{bullet.symbol}</span><span className="globalContent">{bullet.content}</span></li>
+                        <button className="bulletContainer__delete" onClick={deleteClickHandler(yesterday.index, index)} type="button">Delete</button>
+                    </div>
+                )}
             </div>
             <div className="dailyBody__today dayContainer">
-                <pre className="dayContainer__header"><h2>{today.month}.{today.day} {today.name}</h2></pre>
+                <pre className="dailyBody__today__header dayContainer__header"><h2>{today.month}.{today.day} {today.name}</h2></pre>
                 <AddBulletInput index={today.index} bullets={bullets} setBullets={setBullets}/>
                 {bullets[today.index].map( (bullet, index) => 
                     <div className="dayContainer__bulletContainer">
-                        <li className="bulletContainer__bullet">{bullet.symbol}{bullet.content}</li>
+                        <li className="bulletContainer__bullet"><span className="globalSymbol">{bullet.symbol}</span><span className="globalContent">{bullet.content}</span></li>
                         <button className="bulletContainer__delete" onClick={deleteClickHandler(today.index, index)} type="button">Delete</button>
                     </div>
                 )}
             </div>
             <div className="dailyBody__tomorrow dayContainer">
                 <pre className="dayContainer__header"><h2>{tomorrow.month}.{tomorrow.day} {tomorrow.name}</h2></pre>
-                {bullets[tomorrow.index]}
+                <AddBulletInput index={tomorrow.index} bullets={bullets} setBullets={setBullets}/>
+                {bullets[tomorrow.index].map( (bullet, index) => 
+                    <div className="dayContainer__bulletContainer">
+                        <li className="bulletContainer__bullet"><span className="globalSymbol">{bullet.symbol}</span><span className="globalContent">{bullet.content}</span></li>
+                        <button className="bulletContainer__delete" onClick={deleteClickHandler(tomorrow.index, index)} type="button">Delete</button>
+                    </div>
+                )}
             </div>
             <div className="dailyBody__afterTomorrow dayContainer">
                 <pre className="dayContainer__header"><h2>{afterTomorrow.month}.{afterTomorrow.day} {afterTomorrow.name}</h2></pre>
-                {bullets[afterTomorrow.index]}
+                <AddBulletInput index={afterTomorrow.index} bullets={bullets} setBullets={setBullets}/>
+                {bullets[afterTomorrow.index].map( (bullet, index) => 
+                    <div className="dayContainer__bulletContainer">
+                        <li className="bulletContainer__bullet"><span className="globalSymbol">{bullet.symbol}</span><span className="globalContent">{bullet.content}</span></li>
+                        <button className="bulletContainer__delete" onClick={deleteClickHandler(afterTomorrow.index, index)} type="button">Delete</button>
+                    </div>
+                )}
             </div>
         </div>
     )

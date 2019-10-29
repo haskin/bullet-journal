@@ -22,8 +22,23 @@ html {
   /* grid-template-columns: 1fr 1fr; */
   /* left:10%; */
   color:#dadadb;
-  border: 5px solid orange;
+  border: 5px solid #5c7598;
   grid-column:2;
   width:88%;
   height:100%;
+}
+
+.globalSymbol{
+  color:black;
+  position:relative;
+  font-size:25px;
+  padding:0;
+  margin:0;
+  border:0;
+  line-height: 12px;
+  margin-right: 20px; 
+  
+}
+.globalContent{
+  color:black;
 }

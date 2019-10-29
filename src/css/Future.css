@@ -6,7 +6,6 @@
     width:100%;
     padding:0;
     margin:0;
-    border: 5px solid red;
     
 }
 .month-container {
@@ -16,19 +15,41 @@
     display: inline-block;
     width:80%;
     border: 5px solid #5c7598;
+    margin:20px;
+    padding-bottom:50px;
     /* grid-column:1; */
+}
+.monthContainer__header{
+    margin:0;
+    padding:0;
+    text-align: center;
+}
+
+.month-container-form{
+    display:flex;
 }
 
 .month-container-form input{
     position: relative;
-    display: inline-block;
-    width:80%;
+    display: inline;
+    flex:1;
 }
 
 .bullet-value {
     display:block;
 }
 
+.dayContainer__bulletContainer{
+    /* display:flex; */
+    
+    /* border: 1px solid #5c7598; */
+}
+
+.bulletContainer__delete{
+    color:red;
+    float:right;
+    border:0;
+}
 /* #testdf {
     border:5px solid red;
     

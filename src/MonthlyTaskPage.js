@@ -44,16 +44,16 @@ const MonthlyTaskPage = ({monthIndex}) => {
         <div className="monthlyTask">
             <h1 className="monthlyHeader">Tasks</h1>
             <div className="monthlyTaskAdd">
-                <input className="monthlyTaskAdd__input" onChange={inputChangeHandler} type="text"/>
                 <select onChange={symbolChangeHandler}>
                 <option value=".">.</option>
                     <option value="-">-</option>
                     <option value="o">o</option>
                 </select>
-                <button className="monthlyTaskAdd__button" onClick={addTaskHandler} type="button">Add A Task</button>
+                <input className="monthlyTaskAdd__input" onChange={inputChangeHandler} type="text"/>
+                <button className="monthlyTaskAdd__button" onClick={addTaskHandler} type="button">Add</button>
             </div>
             {bullets.map((bullet,index) => ( <div className="monthlyTaskTasks">
-                                                <li className="monthlyTaskTasks__bullet" key={index}>{bullet.symbol}{bullet.content}</li>
+                                                <li className="monthlyTaskTasks__bullet" key={index}><span className="globalSymbol">{bullet.symbol}</span><span className="globalContent">{bullet.content}</span></li>
                                                 <button className="monthlyTaskTasks__deleteButton" onClick={deleteBulletHandler(index)} type="click">Delete</button>
                                             </div>
                                             )

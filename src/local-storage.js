@@ -1,3 +1,6 @@
+import MonthlyCalendarPage from "./MonthlyCalendarPage.js";
+
+
 // Keys ***********************
 const DAILY_KEY = "daily";
 const MONTHLY_KEY = "monthly";
@@ -162,13 +165,21 @@ const setDefaultMonthly = () => {
 /***** Set Monthly Log *****/
 
 /***** Set Future Log *****/
-const setFutureLocalStorage = (id, newBullet) => {
+const setFutureLocalStorage = (id, newBullet, deleteIndex=null) => {
     const future = getLocalStorage(FUTURE_KEY);
     const month = future[id];
     if (month.id === id){
-        month.bullets.push(newBullet)
-        future[id] = month;
-        setLocalStorage(FUTURE_KEY, future);
+        if(deleteIndex != null && newBullet === null){
+            month.bullets = month.bullets.slice(0,deleteIndex)
+                          .concat(month.bullets.slice(deleteIndex+1));
+            future[id] = month;
+            setLocalStorage(FUTURE_KEY, future);
+        }
+        else{
+            month.bullets.push(newBullet)
+            future[id] = month;
+            setLocalStorage(FUTURE_KEY, future);
+        }
     }
 }
 const setDefaultFuture = () => {
@@ -239,9 +250,12 @@ const setDefaultFuture = () => {
 /***** Future Log *****/
 
 const setDefaultLocalStorage = () => {
-    setDefaultDaily();
-    setDefaultFuture();
-    setDefaultMonthly();
+    if(!(getLocalStorage(DAILY_KEY)))
+        setDefaultDaily();
+    if(!(getLocalStorage(MONTHLY_KEY)))
+        setDefaultMonthly();
+    if(!(getLocalStorage(FUTURE_KEY)))
+        setDefaultFuture();
 };
 /******************* Getters ********************/
 
@@ -268,7 +282,25 @@ const getFutureLocalStorageBullets = (id) => {
 }
 /***** Future Log *****/
 
-
+//Outputs all the local storage in JSON format
+const exportLocalStorage = () => {
+    const localStorage = {
+        daily: getDailyLocalStorage(),
+        monthly: getMonthlyLocalStorage(),
+        future: getFutureLocalStorage()
+    }
+    return JSON.stringify(localStorage);
+}
+// const setLocalStorage = (key, data) => {
+//     window.localStorage.setItem(key, JSON.stringify(data));
+// };
+const importLocalStorage = (file) => {
+    const data = JSON.parse(file);
+    setLocalStorage(DAILY_KEY, data.daily);
+    setLocalStorage(MONTHLY_KEY, data.monthly);
+    setLocalStorage(FUTURE_KEY, data.future);
+    window.location.reload(); 
+}
 export default function localStorage() {
     setDefaultLocalStorage();
 }
@@ -276,3 +308,4 @@ export default function localStorage() {
 export {getFutureLocalStorage, setFutureLocalStorage, getFutureLocalStorageBullets};
 export {getMonthlyLocalStorage, setMonthlyCalendarLocalStorage, setMonthlyTaskLocalStorage};
 export {getDailyLocalStorage, setDailyLocalStorage}; 
+export {exportLocalStorage, importLocalStorage};

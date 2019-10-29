@@ -29,25 +29,38 @@ const Month = ({month}) => {
     const symbolChangeHandler = (e) => {
         setSymbol(e.target.value);   
     }
+
+    const deleteClickHandler = (index) => {
+        return () => {
+            setFuture(month.id, null, index);
+            const newBullets = getBullets(month.id);
+            setBullets(newBullets);
+        }
+    }
     return (
         <>
-            <h3>{month.name}</h3>
-            {bullets.map((bullet, index) => <p key={index}>{bullet.symbol}{"   "}{bullet.content}</p>)}
+            <h2 className="monthContainer__header">{month.name}</h2>
             <form className="month-container-form">
-                <input type="text" onChange={inputChangeHandler}></input>          
                 <select onChange={symbolChangeHandler}>
-                <option value=".">.</option>
+                    <option value=".">.</option>
                     <option value="-">-</option>
                     <option value="o">o</option>
                 </select>
+                <input type="text" onChange={inputChangeHandler}></input>          
                 <button type="submit" onClick={submitTaskHandler}>submit</button>
             </form>
+            {bullets.map((bullet, index) =>
+                <div className="dayContainer__bulletContainer">
+                    <li key={index} className="bulletContainer__bullet"><span className="globalSymbol">{bullet.symbol}</span><span className="globalContent">{bullet.content}</span></li>
+                    <button className="bulletContainer__delete" onClick={deleteClickHandler(index)} type="button">Delete</button>
+                </div>
+            )} 
         </>
     );
 };
 
 const Future = () => {
-    const months = getFuture();
+    const months = getFuture(); 
     return (
         <div className="future-container">
             {months.map(month => <div className="month-container">

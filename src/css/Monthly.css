@@ -22,25 +22,47 @@
     /* border: 5px solid blue; */
 }
 
+.monthlyCalender__bulletsContainer{
+    display:flex;
+}
+
+.monthlyCalendar__days{
+    color:black;
+    margin-right:4px;
+}
+
+.monthlyCalendar__deleteButton{
+    color:red;
+    float:right;
+    order:2;
+}
+
 .monthlyCalendar__editButton{
-    display:inline;
+    order:1;
+    float:right;
 }
 
 .editCalenderBullet {
-    display:inline;
+    flex-grow:2; /*Makes the edit calendar take up empty space*/
+    display:flex;
+    /* border: 5px solid yellow; */
+}
+.editCalenderBullet input{
+    flex:1; /*fills in empty space*/
 }
 
 /*Monthly Tasks CSS*/
-.monthlyTaskInput {
-    width: 100%
+.monthlyTaskAdd{
+    display:flex;
 }
 .monthlyTaskAdd__input{
-    position:relative;
-    width:78%
+    flex:1;
 }
 .monthlyTaskTasks__bullet{
     display:inline;
 }
 .monthlyTaskTasks__deleteButton{
-    display: inline;
+    float:right;
+    border:0;
 }
+

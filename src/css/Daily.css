@@ -11,25 +11,51 @@
 
 .dayContainer {
     height:100%;
-    border: 1px solid lightblue;
+    /* border-left: 3px solid #5c7598; */
+    
 }
+
+.dailyBody__yesterday{
+    border-right: 5px solid #5c7598;
+}
+
+.dailyBody__tomorrow{
+    
+    border-right: 5px solid #5c7598;
+}
+
+
+
+
 .dayContainer__header {
     /*Moves the background color all the way up*/
-    position:absolute;
-    width:50%;
+    position:relative;
+    display: inline-block;
+    width:100%;
     margin:0;
     color:#5c7598;
     background-color: #c2c4b6;
 }
 
-.dailyBody__today{
-    border: 3px solid red;
+.dailyBody__today__header{
+    color: #985c75;
 }
 
 .bulletContainer__bullet{
     display:inline;
 }
 .bulletContainer__delete{
-    position: relative;
+    border: 0; /* Fixes an error of the delete not lining up*/
     float:right;
+}
+
+.dailyBulletAdd{
+    display:flex; /*extends input all the way right*/
+}
+.dailyBulletAdd__input{
+    flex: 1; /*extends input all the way right*/
+}
+
+.dailyBulletAdd__button{
+    float: right;
 }
