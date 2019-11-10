@@ -1,6 +1,7 @@
 {
   "name": "bullet-journal",
   "version": "0.1.0",
+  "homepage": "https:/harkin.github.io/bullet-journal",
   "private": true,
   "dependencies": {
     "react": "^16.9.0",
@@ -14,7 +15,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "deploy": "npm run build&&gh-pages -d build"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -32,6 +34,7 @@
     ]
   },
   "devDependencies": {
+    "gh-pages": "^2.1.1",
     "json-server": "^0.15.1"
   }
 }
