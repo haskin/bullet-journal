@@ -23,6 +23,7 @@
 
 .sidebar-links {
     /* border: 5px solid red; */
+    
     text-align:center;
     list-style: none;
     text-decoration: none;
@@ -39,8 +40,15 @@
   padding:0;
 }
 .sidebar-links a{
+  color:#5c7598; 
   /* border: 5px solid red; */
   text-decoration: none;
+}
+
+.sidebar-links a:hover{
+  color:#f7f0c7;
+  /* border: 5px solid red; */
+  /* text-decoration: none; */
 }
      /* list-style:none;
      padding:100px 20px;
