@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "a356a7d67630a9343aa7ea9e59e4a298",
+    "revision": "95193a98c55e31234a007d3f8463f1cf",
     "url": "/bullet-journal/index.html"
   },
   {
-    "revision": "96b4bf6d9499de29e6c1",
+    "revision": "eab62e72880046e12729",
     "url": "/bullet-journal/static/css/main.e8cad7e3.chunk.css"
   },
   {
@@ -12,8 +12,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/bullet-journal/static/js/2.e0b2576e.chunk.js"
   },
   {
-    "revision": "96b4bf6d9499de29e6c1",
-    "url": "/bullet-journal/static/js/main.3b5568f0.chunk.js"
+    "revision": "eab62e72880046e12729",
+    "url": "/bullet-journal/static/js/main.75f3c9a3.chunk.js"
   },
   {
     "revision": "1e7d9651c9638fc26dee",
