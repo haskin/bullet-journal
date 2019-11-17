@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/harkin.github.io/bullet-journal/precache-manifest.59b352215ffb6b50039c0a2f4a061797.js"
+  "/harkin.github.io/bullet-journal/precache-manifest.9e58708f77682950c3f7425e972fb346.js"
 );
 
 self.addEventListener('message', (event) => {
