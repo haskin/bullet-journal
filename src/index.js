@@ -20,12 +20,12 @@ const App = () => {
                 <Sidebar />
                 <div className="main-body">
                     <Nav />
-                    <Route path="/daily" component={Daily}/>           
+                    <Route path="/bullet-journal/daily" component={Daily}/>           
                     {/* <Daily /> */}
                     {/* <Monthly/> */}
-                    <Route path="/monthly" component={Monthly}/>
+                    <Route path="/bullet-journal/monthly" component={Monthly}/>
                     {/* <Future /> */}
-                    <Route path="/future" component={Future}/>
+                    <Route path="/bullet-journal/future" component={Future}/>
                    
                 </div>
             </div>
