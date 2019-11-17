@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "bullet-journal/static/css/main.e8cad7e3.chunk.css",
-    "main.js": "bullet-journal/static/js/main.e1821f7f.chunk.js",
-    "main.js.map": "bullet-journal/static/js/main.e1821f7f.chunk.js.map",
-    "runtime~main.js": "bullet-journal/static/js/runtime~main.52943326.js",
-    "runtime~main.js.map": "bullet-journal/static/js/runtime~main.52943326.js.map",
-    "static/js/2.3e9a9d62.chunk.js": "bullet-journal/static/js/2.3e9a9d62.chunk.js",
-    "static/js/2.3e9a9d62.chunk.js.map": "bullet-journal/static/js/2.3e9a9d62.chunk.js.map",
-    "index.html": "bullet-journal/index.html",
-    "precache-manifest.1eb353da90fd825356b66beaf3fe1fae.js": "bullet-journal/precache-manifest.1eb353da90fd825356b66beaf3fe1fae.js",
-    "service-worker.js": "bullet-journal/service-worker.js",
-    "static/css/main.e8cad7e3.chunk.css.map": "bullet-journal/static/css/main.e8cad7e3.chunk.css.map"
+    "main.css": "/bullet-journal/static/css/main.e8cad7e3.chunk.css",
+    "main.js": "/bullet-journal/static/js/main.e1821f7f.chunk.js",
+    "main.js.map": "/bullet-journal/static/js/main.e1821f7f.chunk.js.map",
+    "runtime~main.js": "/bullet-journal/static/js/runtime~main.29e51502.js",
+    "runtime~main.js.map": "/bullet-journal/static/js/runtime~main.29e51502.js.map",
+    "static/js/2.3e9a9d62.chunk.js": "/bullet-journal/static/js/2.3e9a9d62.chunk.js",
+    "static/js/2.3e9a9d62.chunk.js.map": "/bullet-journal/static/js/2.3e9a9d62.chunk.js.map",
+    "index.html": "/bullet-journal/index.html",
+    "precache-manifest.a88d44505a4142364caeff148e3f0a97.js": "/bullet-journal/precache-manifest.a88d44505a4142364caeff148e3f0a97.js",
+    "service-worker.js": "/bullet-journal/service-worker.js",
+    "static/css/main.e8cad7e3.chunk.css.map": "/bullet-journal/static/css/main.e8cad7e3.chunk.css.map"
   }
 }
