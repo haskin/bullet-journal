@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/haskin.github.io/bullet-journal/static/css/main.e8cad7e3.chunk.css",
-    "main.js": "/haskin.github.io/bullet-journal/static/js/main.e1821f7f.chunk.js",
-    "main.js.map": "/haskin.github.io/bullet-journal/static/js/main.e1821f7f.chunk.js.map",
-    "runtime~main.js": "/haskin.github.io/bullet-journal/static/js/runtime~main.b3474998.js",
-    "runtime~main.js.map": "/haskin.github.io/bullet-journal/static/js/runtime~main.b3474998.js.map",
-    "static/js/2.3e9a9d62.chunk.js": "/haskin.github.io/bullet-journal/static/js/2.3e9a9d62.chunk.js",
-    "static/js/2.3e9a9d62.chunk.js.map": "/haskin.github.io/bullet-journal/static/js/2.3e9a9d62.chunk.js.map",
-    "index.html": "/haskin.github.io/bullet-journal/index.html",
-    "precache-manifest.164fbd24e94d3546dfdc022bcb5baadf.js": "/haskin.github.io/bullet-journal/precache-manifest.164fbd24e94d3546dfdc022bcb5baadf.js",
-    "service-worker.js": "/haskin.github.io/bullet-journal/service-worker.js",
-    "static/css/main.e8cad7e3.chunk.css.map": "/haskin.github.io/bullet-journal/static/css/main.e8cad7e3.chunk.css.map"
+    "main.css": "/static/css/main.e8cad7e3.chunk.css",
+    "main.js": "/static/js/main.e1821f7f.chunk.js",
+    "main.js.map": "/static/js/main.e1821f7f.chunk.js.map",
+    "runtime~main.js": "/static/js/runtime~main.b8a46572.js",
+    "runtime~main.js.map": "/static/js/runtime~main.b8a46572.js.map",
+    "static/js/2.3e9a9d62.chunk.js": "/static/js/2.3e9a9d62.chunk.js",
+    "static/js/2.3e9a9d62.chunk.js.map": "/static/js/2.3e9a9d62.chunk.js.map",
+    "index.html": "/index.html",
+    "precache-manifest.0ce81656c469fea62c0e52ec41ad4236.js": "/precache-manifest.0ce81656c469fea62c0e52ec41ad4236.js",
+    "service-worker.js": "/service-worker.js",
+    "static/css/main.e8cad7e3.chunk.css.map": "/static/css/main.e8cad7e3.chunk.css.map"
   }
 }
