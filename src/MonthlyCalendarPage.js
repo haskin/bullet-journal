@@ -49,7 +49,6 @@ function storageChangeMonthyCalendar() {
 //    };
 var testMonth;
 const MonthlyCalendarPage = ({monthIndex}) => {
-    console.log(monthIndex);
     testMonth = monthIndex;
     const [input, setInput] = useState('');
     //Gets month from local storage

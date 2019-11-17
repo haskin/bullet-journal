@@ -29,9 +29,6 @@ const test = ((name, definition) => {
     const downloadStrategy = isSecureContext || 'MozAppearance' in document.documentElement.style
       ? 'iframe'
       : 'navigate'
-    console.log("hello world");
-    console.log(window.WritableStream);
-    console.log(WritableStream);
   
     const streamSaver = {
       createWriteStream,

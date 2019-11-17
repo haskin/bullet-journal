@@ -89,7 +89,6 @@ const Daily = () => {
     const yesterday = new DayElement(new Date(currentDate.valueOf() 
                                     - 86400000)); // that is: 24 * 60 * 60 * 1000)
     const today = new DayElement(currentDate);
-    console.log(bullets[today.index]);
     const tomorrow = new DayElement(new Date(currentDate.valueOf() 
                                     + 86400000));
     const afterTomorrow = new DayElement(new Date(currentDate.valueOf() 
@@ -112,7 +111,6 @@ const Daily = () => {
         }
     }
 
-    console.log(bullets);
     return (
         <div className="dailyBody">
             <div className="dailyBody__yesterday dayContainer">

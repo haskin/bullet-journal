@@ -8,10 +8,16 @@ const FUTURE_KEY = "future";
 // Keys ***********************
 
 const setLocalStorage = (key, data) => {
+    console.log("in set storage key: ", key, "  data: ", data);
     window.localStorage.setItem(key, JSON.stringify(data));
 };
 const getLocalStorage = (key) => {
-    return JSON.parse(window.localStorage.getItem(key));
+    try {
+        return JSON.parse(window.localStorage.getItem(key));
+    }
+    catch {
+        console.log(2);
+    }
 }
 /******************* Setters ********************/
 /***** Set Daily Log *****/
@@ -59,9 +65,9 @@ const setMonthlyCalendarLocalStorage = (monthIndex, dayIndex, data) => {
 };
 //Sets the task data in the monthly local storage
 const setMonthlyTaskLocalStorage = (monthIndex, task, deleteIndex=null) => {
-    console.log("month index ", monthIndex);
-    console.log("task", task);
-    console.log(deleteIndex);
+    // console.log("month index ", monthIndex);
+    // console.log("task", task);
+    // console.log(deleteIndex);
     const monthly = getMonthlyLocalStorage(MONTHLY_KEY);
     const month = monthly[monthIndex];
     if (month.id === monthIndex){
@@ -250,12 +256,15 @@ const setDefaultFuture = () => {
 /***** Future Log *****/
 
 const setDefaultLocalStorage = () => {
-    if(!(getLocalStorage(DAILY_KEY)))
+    if(!(getLocalStorage(DAILY_KEY))){
         setDefaultDaily();
-    if(!(getLocalStorage(MONTHLY_KEY)))
+    }
+    if(!(getLocalStorage(MONTHLY_KEY))){
         setDefaultMonthly();
-    if(!(getLocalStorage(FUTURE_KEY)))
+    }
+    if(!(getLocalStorage(FUTURE_KEY))){
         setDefaultFuture();
+    }
 };
 /******************* Getters ********************/
 
