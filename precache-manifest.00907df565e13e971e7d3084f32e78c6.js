@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "b26033df04bbfdb113c8fb27e2cafb18",
+    "revision": "37fc0809b204a0aaefcd0d7f1f2e2653",
     "url": "/harkin.github.io/bullet-journal/index.html"
   },
   {
-    "revision": "abd87fdc50be04c3bb76",
+    "revision": "f0ef14e51f30f45a1485",
     "url": "/harkin.github.io/bullet-journal/static/css/main.e8cad7e3.chunk.css"
   },
   {
@@ -12,8 +12,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/harkin.github.io/bullet-journal/static/js/2.3e9a9d62.chunk.js"
   },
   {
-    "revision": "abd87fdc50be04c3bb76",
-    "url": "/harkin.github.io/bullet-journal/static/js/main.71453c54.chunk.js"
+    "revision": "f0ef14e51f30f45a1485",
+    "url": "/harkin.github.io/bullet-journal/static/js/main.e1821f7f.chunk.js"
   },
   {
     "revision": "a8c84d6dd5424efcfe21",
